@@ -17,7 +17,6 @@ public class RemoveElement {
 	public static void main(String[] args) {
 		var re = new RemoveElement();
 		re.removeElement(new int[]{0,1,2,2,3,0,4,2}, 2);
-
 	}
 
 }
