@@ -8,7 +8,18 @@ public class MajorityElement {
 //			counter.put(num, counter.getOrDefault(num, 0) + 1);
 //		}
 //		
-//		return Collections.max(counter.keySet());
+//		int majority = nums[0];
+//		int maxCount = 0;
+//		
+//		for (Map.Entry<Integer, Integer> entry : counter.entrySet()) {
+//            if (entry.getValue() > maxCount) {
+//                majority = entry.getKey();
+//                maxCount = entry.getValue();
+//            }
+//        }
+//		
+//		return majority;
+		
 		int count = 0;
 		int candidate = 0;
 		
