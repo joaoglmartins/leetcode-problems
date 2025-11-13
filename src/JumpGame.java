@@ -2,26 +2,14 @@
 public class JumpGame {
 	
 	public boolean canJump(int[] nums) {
-		
-		Boolean[] memo = new Boolean[nums.length];
-    	
-    	return canJumpAux(nums, 0, memo);
-    }
+		int reachable = 0;
 
-	private boolean canJumpAux(int[] nums, int index, Boolean[] memo) {
-		
-		if (index == nums.length -1) return true;
-		if(nums[index] == 0) return false;
-		
-		if (memo[index] != null) return memo[index];
-		
-		int maxJumpLength = nums[index];
-		
-		for (int i = 1; i <= maxJumpLength; i++) {
-			if (canJumpAux(nums, index + i, memo)) return memo[index] = true;
-		}
-		
-		return memo[index] = false;
+	    for (int i = 0; i < nums.length; i++) {
+	        if (i > reachable) return false;
+	        reachable = Math.max(reachable, i + nums[i]);
+	    }
+
+	    return true;
 	}
 
 	public static void main(String[] args) {
