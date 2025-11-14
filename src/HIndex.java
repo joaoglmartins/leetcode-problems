@@ -3,11 +3,9 @@ public class HIndex {
 	
 	public int hIndex(int[] citations) {
 		
-		if (citations.length == 1) return citations[0];
-		
 		int hindex = 0;
 		
-        for (int i = 0; i < citations.length; i++) {
+        for (int i = 1; i <= citations.length; i++) {
         	int counter = 0;
         	for (int citation : citations) {
         		if (citation >= i) counter++;
