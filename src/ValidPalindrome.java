@@ -2,27 +2,34 @@
 public class ValidPalindrome {
 	
 	public boolean isPalindrome(String s) {
-
-	    StringBuilder clean = new StringBuilder();
-	    for (char c : s.toCharArray()) {
-	        if (Character.isLetterOrDigit(c)) {
-	            clean.append(Character.toLowerCase(c));
-	        }
-	    }
-
-	    String str = clean.toString();
-	    if (str.isEmpty()) return true;
-
 	    int i = 0;
-	    int j = str.length() - 1;
+	    int j = s.length() - 1;
 
-	    while (i <= j) {
-	        if (str.charAt(i) != str.charAt(j)) return false;
+	    while (i < j) {
+
+	        while (i < j && !isAlphaNum(s.charAt(i))) {
+	            i++;
+	        }
+
+	        while (i < j && !isAlphaNum(s.charAt(j))) {
+	            j--;
+	        }
+
+	        if (Character.toLowerCase(s.charAt(i)) != Character.toLowerCase(s.charAt(j))) {
+	            return false;
+	        }
+
 	        i++;
 	        j--;
 	    }
 
 	    return true;
+	}
+	
+	private boolean isAlphaNum(char c) {
+	    return (c >= 'a' && c <= 'z') ||
+	           (c >= 'A' && c <= 'Z') ||
+	           (c >= '0' && c <= '9');
 	}
 
 	public static void main(String[] args) {
