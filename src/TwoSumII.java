@@ -8,7 +8,7 @@ public class TwoSumII {
         while (leftPointer < rightPointer) {
         	int sum = numbers[leftPointer] +  numbers[rightPointer];
         	
-        	if (sum == target) return new int[] {++leftPointer, ++rightPointer};
+        	if (sum == target) return new int[] {leftPointer + 1, rightPointer + 1};
         	
         	if (sum > target) {
         		rightPointer--;
@@ -17,7 +17,7 @@ public class TwoSumII {
         	}
         }
         
-        return new int[] {++leftPointer, ++rightPointer};
+        return new int[] {-1, -1};
     }
 
 	public static void main(String[] args) {
