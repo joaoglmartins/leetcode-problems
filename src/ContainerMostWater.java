@@ -6,10 +6,10 @@ public class ContainerMostWater {
         int leftPointer = 0;
         int rightPointer = height.length - 1;
         while (leftPointer < rightPointer) {
-        	int width = Math.min(height[leftPointer], height[rightPointer]);
-        	int length = rightPointer - leftPointer;
+        	int minHeight = Math.min(height[leftPointer], height[rightPointer]);
+        	int width = rightPointer - leftPointer;
         	
-        	if(width * length > max) max = width * length;
+        	if(minHeight * width > max) max = minHeight * width;
         	
         	if(height[leftPointer] < height[rightPointer]) {
         		leftPointer++;
