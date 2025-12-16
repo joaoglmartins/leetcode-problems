@@ -1,32 +1,30 @@
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class IsomorphicStrings {
 	
 	public boolean isIsomorphic(String s, String t) {
-        Map<Character, Integer> sMap = new HashMap<Character, Integer>();
-        Map<Character, Integer> tMap = new HashMap<Character, Integer>();
-        
-        for (int i = 0; i < s.length(); i++) {
-        	sMap.put(s.charAt(i), sMap.getOrDefault(s.charAt(i), 0) + 1);
-        	tMap.put(t.charAt(i), tMap.getOrDefault(t.charAt(i), 0) + 1);
-        }
-        
-        Integer[] sArray = sMap.values().toArray(new Integer[0]);
-        Integer[] tArray = tMap.values().toArray(new Integer[0]);
-        
-        if (sArray.length != tArray.length) return false;
-        
-        Arrays.sort(sArray);
-        Arrays.sort(tArray);
-        
-        for (int j = 0; j < sArray.length; j++) {
-        	if (sArray[j] != tArray[j]) return false; 
-        }
-        
-        return true;
-        
+		Map<Character, Character> sMap = new HashMap<>();
+	    Map<Character, Character> tMap = new HashMap<>();
+
+	    for (int i = 0; i < s.length(); i++) {
+	        char c1 = s.charAt(i);
+	        char c2 = t.charAt(i);
+
+	        if (sMap.containsKey(c1)) {
+	            if (sMap.get(c1) != c2) return false;
+	        } else {
+	            sMap.put(c1, c2);
+	        }
+
+	        if (tMap.containsKey(c2)) {
+	            if (tMap.get(c2) != c1) return false;
+	        } else {
+	            tMap.put(c2, c1);
+	        }
+	    }
+
+	    return true;
     }
 
 	public static void main(String[] args) {
