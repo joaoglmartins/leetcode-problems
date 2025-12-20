@@ -1,20 +1,17 @@
-import java.util.HashSet;
-import java.util.Set;
-
 public class HappyNumber {
 	
 	public boolean isHappy(int n) {
-		
-		Set<Integer> set = new HashSet<Integer>();
-		
-		while (n != 1 && !set.contains(n)) {
-	        set.add(n);
-	        n = sumOfSquares(n);
-	    }
+	    int slow = n;
+	    int fast = n;
 
-	    return n == 1;
-    }
-	
+	    do {
+	        slow = sumOfSquares(slow);
+	        fast = sumOfSquares(sumOfSquares(fast));
+	    } while (slow != fast);
+
+	    return slow == 1;
+	}
+
 	private int sumOfSquares(int n) {
 	    int sum = 0;
 	    while (n > 0) {
