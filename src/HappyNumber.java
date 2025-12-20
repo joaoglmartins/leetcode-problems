@@ -7,21 +7,23 @@ public class HappyNumber {
 		
 		Set<Integer> set = new HashSet<Integer>();
 		
-		while (!set.contains(n)) {
-			set.add(n);
-			
-			String number = Integer.toString(n);
-			
-			n = 0;
-			for (int i = 0; i < number.length(); i++) {
-				n += Math.pow(Integer.parseInt(number.charAt(i) + ""), 2);
-			}
-			
-			if (n == 1) return true;
-		}
-		
-		return false;
+		while (n != 1 && !set.contains(n)) {
+	        set.add(n);
+	        n = sumOfSquares(n);
+	    }
+
+	    return n == 1;
     }
+	
+	private int sumOfSquares(int n) {
+	    int sum = 0;
+	    while (n > 0) {
+	        int digit = n % 10;
+	        sum += digit * digit;
+	        n /= 10;
+	    }
+	    return sum;
+	}
 
 	public static void main(String[] args) {
 		var hn = new HappyNumber();
